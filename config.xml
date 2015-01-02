@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<widget xmlns = "http://www.w3.org/ns/widgets"
+		xmlns:gap = "http://phonegap.com/ns/1.0"
+		id        = "com.siradanbiri.mobile"
+		versionCode="1"
+		version   = "1.0.0">
+		<name>Sıradan Biri</name>
+		<description>Sıradan Biri Mobile Uygulaması</description>
+		<author href="http://www.bahri.info" email="bahri@bahri.info">Bahri CANLI</author>
+		<preference name="phonegap-version" value="3.6.3" />
+		<preference name="orientation" value="portrait" />
+		<preference name="fullscreen" value="true" />
+		<preference name="target-device" value="universal" />
+		<preference name="webviewbounce" value="true" />
+		<preference name="prerendered-icon" value="true" />
+		<preference name="stay-in-webview" value="true" />
+		<preference name="ios-statusbarstyle" value="default" />
+		<preference name="detect-data-types" value="true" />
+		<preference name="exit-on-suspend" value="false" />
+		<preference name="show-splash-screen-spinner" value="false" />
+		<preference name="auto-hide-splash-screen" value="false" />
+		<preference name="EnableViewportScale" value="true" />
+		<preference name="MediaPlaybackRequiresUserAction" value="false" />
+		<preference name="AllowInlineMediaPlayback" value="false" />
+		<preference name="BackupWebStorage" value="none" />
+		<preference name="TopActivityIndicator" value="gray" />
+		<preference name="KeyboardDisplayRequiresUserAction" value="false" />
+		<preference name="HideKeyboardFormAccessoryBar" value="false" />
+		<preference name="SuppressesIncrementalRendering" value="false" />
+		<preference name="SplashScreenDelay" value="10000" />
+		<preference name="ErrorUrl" value=""/>
+		<preference name="BackgroundColor" value="0x000000"/>
+		<preference name="KeepRunning" value="true"/>
+		<preference name="DisallowOverscroll" value="false"/>		
+		<preference name="LoadUrlTimeoutValue" value="20000" />
+		<preference name="disable-cursor" value="false" />
+
+		<preference name="android-minSdkVersion" value="7" />
+ 		<preference name="android-installLocation" value="auto" />    	
+		<preference name="SplashScreen" value="splash" />
+		
+		<gap:platform name="ios" />
+	    <gap:platform name="android" />
+
+		<feature name="http://api.phonegap.com/1.0/network"/>
+
+		<gap:plugin name="org.apache.cordova.inappbrowser"  />
+		<gap:plugin name="org.apache.cordova.network-information"  />
+		<gap:plugin name="org.apache.cordova.splashscreen"  />
+	
+		<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+    	<false/>
+		</gap:config-file>
+
+		<icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
+		<icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+		<icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114" />
+		<icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
+		<icon src="res/icon/ios/icon-76.png" gap:platform="ios" width="76" height="76" />
+		<icon src="res/icon/ios/icon-120.png" gap:platform="ios" width="120" height="120" />
+		<icon src="res/icon/ios/icon-152.png" gap:platform="ios" width="152" height="152" />
+	    
+	    <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+	    <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+	    <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+	    <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+	    
+		<gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
+		<gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960" />
+		<gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136" />
+		<gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1004" />
+        <gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png" gap:platform="ios" width="1536" height="2008" />
+
+	 	<gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+	    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+	    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+	    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />	    
+s
+		<access origin="*"/>
+	</widget>
