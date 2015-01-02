@@ -104,7 +104,7 @@ function posts(json) {
 	  		var date = "null";
 	  	}
         
-        html = html + "<li>" + "<a href='javascript:open_browser(\"" + posturl + "\")'>" + "<h2>" + postcontent + "</h2>" + "<p>" + date + "</p></a></li>";
+        html = html + "<li>" + "<a href='javascript:open_browser(\"" + posturl + "?m=1\")'>" + "<h2>" + postcontent + "</h2>" + "<p>" + date + "</p></a></li>";
         
         document.getElementById("postsList").innerHTML = html;
         $("#postsList").listview("refresh");

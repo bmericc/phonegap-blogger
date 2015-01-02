@@ -18,7 +18,7 @@
 		<preference name="detect-data-types" value="true" />
 		<preference name="exit-on-suspend" value="false" />
 		<preference name="show-splash-screen-spinner" value="false" />
-		<preference name="auto-hide-splash-screen" value="false" />
+		<preference name="auto-hide-splash-screen" value="true" />
 		<preference name="EnableViewportScale" value="true" />
 		<preference name="MediaPlaybackRequiresUserAction" value="false" />
 		<preference name="AllowInlineMediaPlayback" value="false" />
