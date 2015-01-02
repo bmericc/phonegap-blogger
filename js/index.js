@@ -115,5 +115,5 @@ function posts(json) {
 
 function open_browser(link)
 {
-    window.open(link, '_blank', 'location=yes');
+    window.open(link, '_blank', 'location=no','closebuttoncaption=back');
 }
