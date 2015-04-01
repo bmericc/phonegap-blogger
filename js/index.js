@@ -3,25 +3,27 @@ document.addEventListener('deviceready', function() {
 });  
 
 
-(function($) {
-var url = "http://www.siradanbiri.com/feeds/posts/default?alt=json-in-script&callback=?";
 
-$.ajax({
-   type: 'GET',
-    url: url,
-    async: false,
-    jsonpCallback: 'jsonCallback',
-    contentType: "application/json",
-    dataType: 'jsonp',
-    success: function(json) {
-       posts(json);
-    },
-    error: function(e) {
-       console.log(e.message);
-    }
-});
+$( document ).on( "pagebeforeshow", "#postIndex", function() {
+
+	var url = "http://www.siradanbiri.com/feeds/posts/default?alt=json-in-script&callback=?";
+
+	$.ajax({
+	   type: 'GET',
+	    url: url,
+	    async: false,
+	    contentType: "application/json",
+	    dataType: 'jsonp',
+	    success: function(json) {
+	       posts(json);
+	    },
+	    error: function(e) {
+	       console.log(e.message);
+	    }
+	});
  
-})(jQuery);
+});
+
 
 function tarih(date){
 
@@ -65,6 +67,18 @@ function strip(html)
    return tmp.textContent || tmp.innerText || "";
 }
 
+function post(json) {
+
+	console.log(json);
+
+	document.getElementById("title").innerHTML = json.entry.title.$t;
+
+    var html = "<h1>"+json.entry.title.$t+"</h1>";
+    html += "<p>"+json.entry.content.$t+"</p>";
+
+	document.getElementById("post").innerHTML = html;
+}
+
 function posts(json) {
 
 
@@ -77,7 +91,13 @@ function posts(json) {
 	    {
 	      if (json.feed.entry[i].link[j].rel == 'alternate')
 	      {
-	        posturl = json.feed.entry[i].link[j].href;
+	        var posturl = json.feed.entry[i].link[j].href;
+	        break;
+	      }
+
+	      if (json.feed.entry[i].link[j].rel == 'self')
+	      {
+	        var feedurl = json.feed.entry[i].link[j].href;
 	        break;
 	      }
 	    }
@@ -93,6 +113,14 @@ function posts(json) {
 	    if (postcontent.length > 200) postcontent = strip(postcontent).substring(0,200);
 	    else postcontent = strip(postcontent);
 
+		if ("title" in json.feed.entry[i]) {
+	      var posttitle = json.feed.entry[i].title.$t;
+	    }
+	    else {
+	      var posttitle = "Başlıksız";
+	    }
+
+
 		if ("published" in json.feed.entry[i]) {
 	      	var date = json.feed.entry[i].published.$t;
 	      	var d=new Date(date);	 
@@ -104,7 +132,7 @@ function posts(json) {
 	  		var date = "null";
 	  	}
         
-        html = html + "<li>" + "<a href='javascript:open_browser(\"" + posturl + "?m=1\")'>" + "<h2>" + postcontent + "</h2>" + "<p>" + date + "</p></a></li>";
+        html = html + "<li>" + "<a href='post.html?url="+feedurl+"'>" + "<h2>" + posttitle + "</h2><p>"+postcontent + "</p>" + "<p>" + date + "</p></a></li>";
         
         document.getElementById("postsList").innerHTML = html;
         $("#postsList").listview("refresh");
@@ -117,3 +145,37 @@ function open_browser(link)
 {
     window.open(link, '_blank', 'location=yes','closebuttoncaption=back');
 }
+
+function getQueryVariable(variable)
+{
+   var query = window.location.search.substring(1);
+   var vars = query.split("&");
+   for (var i=0;i<vars.length;i++) {
+           var pair = vars[i].split("=");
+           if(pair[0] == variable){return pair[1];}
+   }
+   return(false);
+}
+
+
+$( document ).on( "pagebeforeshow", "#postPage", function() {
+                
+    var postUrl = getQueryVariable("url");
+    
+	$.ajax({
+	   type: 'GET',
+	    url: postUrl+"?alt=json-in-script&callback=?",
+	    async: false,
+	    contentType: "application/json",
+	    dataType: 'jsonp',
+	    success: function(json) {
+	       post(json);
+	    },
+	    error: function(e) {
+	       console.log(e.message);
+	    }
+	});
+	 
+	
+     
+});
