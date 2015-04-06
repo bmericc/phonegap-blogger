@@ -41,7 +41,8 @@
 		
 		<gap:platform name="ios" />
 	    <gap:platform name="android" />
-
+	    <gap:platform name="winphone" />
+	    
 		<feature name="http://api.phonegap.com/1.0/network"/>
 
 		<gap:plugin name="org.apache.cordova.inappbrowser"  />
@@ -64,6 +65,9 @@
 	    <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png" />
 	    <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/icon-72-hdpi.png" />
 	    <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+
+	    <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
+        <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173-tile.png" />
 	    
 		<gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480" />
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960" />
@@ -74,7 +78,9 @@
 	 	<gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
 	    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
 	    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
-	    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />	    
-s
+	    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />	   
+
+	    <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" /> 
+
 		<access origin="*"/>
 	</widget>
