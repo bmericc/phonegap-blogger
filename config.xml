@@ -50,8 +50,18 @@
 		<gap:plugin name="org.apache.cordova.splashscreen"  />
 	
 		<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
-    	<false/>
+		    	<false/>
 		</gap:config-file>
+
+                <gap:config-file platform="winphone" parent="/Deployment" mode="replace">
+                        <Languages xmlns="">
+                                <Language code="tr-TR" />
+                        </Languages>
+                        <Languages xmlns="">
+                                <Language code="en-US" />
+                        </Languages>
+                        <DefaultLanguage xmlns="" code="tr-TR" />
+                </gap:config-file>
 
 		<icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
 		<icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
