@@ -14,11 +14,16 @@ $( document ).on( "pagebeforeshow", "#postIndex", function() {
 	    async: false,
 	    contentType: "application/json",
 	    dataType: 'jsonp',
+	    timeout: 500,
 	    success: function(json) {
 	       posts(json);
 	    },
-	    error: function(e) {
-	       console.log(e.message);
+	    error: function (parsedjson, textStatus, errorThrown) {
+
+		$("#dialog #title").html(textStatus);
+	        $("#dialog #content").html("" + errorThrown);        
+		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'});        
+        
 	    }
 	});
  
@@ -168,11 +173,18 @@ $( document ).on( "pagebeforeshow", "#postPage", function() {
 	    async: false,
 	    contentType: "application/json",
 	    dataType: 'jsonp',
+	    timeout: 5000,
 	    success: function(json) {
 	       post(json);
 	    },
-	    error: function(e) {
-	       console.log(e.message);
+	    error: function (parsedjson, textStatus, errorThrown) {
+
+		$("#dialog #title").html(textStatus);
+	        $("#dialog #content").html("" + errorThrown);        
+
+
+		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'}); 
+
 	    }
 	});
 	 
