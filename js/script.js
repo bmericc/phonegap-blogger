@@ -20,7 +20,6 @@ $( document ).on( "pagebeforeshow", "#postIndex", function() {
 	    },
 	    error: function (xOptions, textStatus) {
 		$("#dialog #title").html(textStatus);
-		console.log(xOptions);
 	        $("#dialog #content").html("" + xOptions.context);        
 		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'});        
 	    }
