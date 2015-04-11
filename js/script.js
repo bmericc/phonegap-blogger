@@ -8,22 +8,21 @@ $( document ).on( "pagebeforeshow", "#postIndex", function() {
 
 	var url = "http://www.siradanbiri.com/feeds/posts/default?alt=json-in-script&callback=?";
 
-	$.ajax({
+	$.jsonp({
 	   type: 'GET',
 	    url: url,
 	    async: false,
 	    contentType: "application/json",
 	    dataType: 'jsonp',
-	    timeout: 500,
+	    timeout: 5000,
 	    success: function(json) {
 	       posts(json);
 	    },
-	    error: function (parsedjson, textStatus, errorThrown) {
-
+	    error: function (xOptions, textStatus) {
 		$("#dialog #title").html(textStatus);
-	        $("#dialog #content").html("" + errorThrown);        
+		console.log(xOptions);
+	        $("#dialog #content").html("" + xOptions.context);        
 		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'});        
-        
 	    }
 	});
  
@@ -167,7 +166,7 @@ $( document ).on( "pagebeforeshow", "#postPage", function() {
                 
     var postUrl = getQueryVariable("url");
     
-	$.ajax({
+	$.jsonp({
 	   type: 'GET',
 	    url: postUrl+"?alt=json-in-script&callback=?",
 	    async: false,
@@ -177,14 +176,10 @@ $( document ).on( "pagebeforeshow", "#postPage", function() {
 	    success: function(json) {
 	       post(json);
 	    },
-	    error: function (parsedjson, textStatus, errorThrown) {
-
+	    error: function (xOptions, textStatus) {
 		$("#dialog #title").html(textStatus);
-	        $("#dialog #content").html("" + errorThrown);        
-
-
-		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'}); 
-
+	        $("#dialog #content").html("" + xOptions.context);        
+		$.mobile.changePage('#dialog', {transition: 'pop', role: 'dialog'});        
 	    }
 	});
 	 
