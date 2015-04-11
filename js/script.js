@@ -179,3 +179,40 @@ $( document ).on( "pagebeforeshow", "#postPage", function() {
 	
      
 });
+
+ /* load external js files */
+function loadScript( url, callback) {
+	if($('script[src="' + url + '"]').length == 0) {
+		var head = document.getElementsByTagName('head')[0];
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = url;
+		script.onreadystatechange = callback;
+		script.onload = callback;
+		head.appendChild(script);
+	}
+	else {
+		callback();
+	}
+}
+
+/* load external css files */
+function loadCss(url){
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+	link.href = url;    
+    head.appendChild(link);
+}
+
+$(document).ready(function(){
+
+        if( navigator.userAgent.match(/Windows Phone/i) ){
+                loadScript( "js/winstore-jscompat.js", function() {});
+        }
+
+});
+
+
+
+
