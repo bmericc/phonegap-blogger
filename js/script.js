@@ -6,9 +6,9 @@ document.addEventListener('deviceready', function() {
 
 $( document ).on( "pagebeforeshow", "#postIndex", function() {
 
-	var url = "http://www.siradanbiri.com/feeds/posts/default?alt=json-in-script&callback=?";
+	var url = "https://www.blogger.com/feeds/1006778221783468213/posts/default?alt=json-in-script&callback=?";
 
-	$.jsonp({
+	$.ajax({
 	   type: 'GET',
 	    url: url,
 	    async: false,
@@ -63,28 +63,20 @@ function tarih(date){
 	}
 }
 
-function strip(html)
-{
+function strip(html) {
    var tmp = document.createElement("DIV");
    tmp.innerHTML = html;
    return tmp.textContent || tmp.innerText || "";
 }
 
 function post(json) {
-
-	console.log(json);
-
-	document.getElementById("title").innerHTML = json.entry.title.$t;
-
-    var html = "<h1>"+json.entry.title.$t+"</h1>";
-    html += "<p>"+json.entry.content.$t+"</p>";
-
-	document.getElementById("post").innerHTML = html;
+   $("#postPage #title").html( json.entry.title.$t );
+   var html = "<h1>"+json.entry.title.$t+"</h1>";
+   html += "<p>"+json.entry.content.$t+"</p>";
+   $("#postPage #post").html( html );
 }
 
 function posts(json) {
-
-
     var html = "";
 
   	for (var i = 0; i < json.feed.entry.length; i++)
@@ -165,7 +157,7 @@ $( document ).on( "pagebeforeshow", "#postPage", function() {
                 
     var postUrl = getQueryVariable("url");
     
-	$.jsonp({
+	$.ajax({
 	   type: 'GET',
 	    url: postUrl+"?alt=json-in-script&callback=?",
 	    async: false,
