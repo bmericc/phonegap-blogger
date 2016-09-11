@@ -7,7 +7,7 @@
 		<name>Sıradan Biri</name>
 		<description>Sıradan Biri Mobile Uygulaması</description>
 		<author href="http://www.bahri.info" email="bahri@bahri.info">Bahri CANLI</author>
-		<preference name="phonegap-version" value="3.7.0" />
+		<preference name="phonegap-version" value="cli-6.3.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="universal" />
